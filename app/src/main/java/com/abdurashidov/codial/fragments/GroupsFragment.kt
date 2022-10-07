@@ -13,6 +13,7 @@ import com.abdurashidov.codial.databinding.FragmentGroupsBinding
 import com.abdurashidov.codial.databinding.FragmentMentorsBinding
 import com.abdurashidov.codial.db.MyDbHelper
 import com.abdurashidov.codial.models.Course
+import com.abdurashidov.codial.models.MyMentorObject
 
 class GroupsFragment : Fragment(), CourseAdapter.RvAction {
 
@@ -38,6 +39,7 @@ class GroupsFragment : Fragment(), CourseAdapter.RvAction {
     }
 
     override fun itemClick(course: Course, position: Int) {
+        MyMentorObject.courseId=position
         findNavController().navigate(R.id.groupListFragment, bundleOf("key" to course))
     }
 

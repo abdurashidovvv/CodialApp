@@ -69,22 +69,10 @@ class GroupListFragment : Fragment(), GroupAdapter.GroupRvEvent {
                     0->{
                         binding.add.visibility=View.GONE
                         MyMentorObject.onRegisterCallBack=0
-                        MyDbHelper(binding.root.context).getAllGroups().forEach {
-                            if (it.open==false){
-                                list2.add(it)
-                            }
-                        }
-                        FragmentViewPagerItemBinding.inflate(layoutInflater).myRv.adapter=GroupAdapter(list2, this@GroupListFragment)
                     }
                     1->{
                         binding.add.visibility=View.VISIBLE
                         MyMentorObject.onRegisterCallBack=1
-                        MyDbHelper(binding.root.context).getAllGroups().forEach {
-                            if (it.open==true){
-                                list2.add(it)
-                            }
-                        }
-                        FragmentViewPagerItemBinding.inflate(layoutInflater).myRv.adapter=GroupAdapter(list2, this@GroupListFragment)
                     }
                 }
             }

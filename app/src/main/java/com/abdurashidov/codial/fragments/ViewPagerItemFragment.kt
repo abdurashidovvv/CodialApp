@@ -2,6 +2,7 @@ package com.abdurashidov.codial.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,7 @@ class ViewPagerItemFragment : Fragment(), GroupAdapter.GroupRvEvent {
     private lateinit var myDbHelper: MyDbHelper
     private lateinit var groupAdapter:GroupAdapter
     private lateinit var list:ArrayList<Group>
+    private val TAG = "ViewPagerItemFragment"
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -45,7 +47,7 @@ class ViewPagerItemFragment : Fragment(), GroupAdapter.GroupRvEvent {
 
         if (MyMentorObject.onRegisterCallBack==0){
             myDbHelper.getAllGroups().forEach {
-                if (it.open==false){
+                if (it.open==false && it.course!!.id==MyMentorObject.courseId){
                     list.add(it)
                 }
             }
@@ -55,10 +57,11 @@ class ViewPagerItemFragment : Fragment(), GroupAdapter.GroupRvEvent {
         }
         if (MyMentorObject.onRegisterCallBack==1){
             myDbHelper.getAllGroups().forEach {
-                if (it.open==true){
+                if (it.open==true && it.course!!.id==MyMentorObject.courseId){
                     list.add(it)
                 }
             }
+            Log.d(TAG, "onCreateView: $list")
             groupAdapter=GroupAdapter(list, this)
             binding.myRv.adapter=groupAdapter
             groupAdapter.notifyDataSetChanged()
