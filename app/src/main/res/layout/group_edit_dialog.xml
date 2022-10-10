@@ -10,19 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Kurs nomi"/>
-    <EditText
-        android:id="@+id/about"
+
+    <Spinner
+        android:id="@+id/spinner_mentor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Kurs haqida"/>
-    <EditText
-        android:id="@+id/about_2"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/spinner_time"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="20dp"
-        android:hint="Kurs haqida"/>
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/spinner_days"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +43,7 @@
             android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Qo'shish"
+            android:text="O'zgartirish"
             android:textColor="#FFB800"
             android:textSize="16sp"/>
     </LinearLayout>

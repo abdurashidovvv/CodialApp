@@ -20,4 +20,15 @@ interface MyDbInterface {
     fun getCourseById(id:Int):Course
     fun getMentorById(id:Int):Mentor
     fun getGroupById(id: Int):Group
+
+    fun deleteCourse(course: Course)
+    fun deleteMentor(mentor: Mentor)
+    fun deleteGroup(group: Group)
+    fun deleteStudent(student: Student)
+
+    fun editMentors(mentor: Mentor)
+    fun editGroup(group: Group)
+    fun editStudent(student: Student)
+
+    fun editGroupOpen(group: Group)
 }

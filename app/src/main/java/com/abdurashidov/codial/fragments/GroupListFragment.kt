@@ -34,12 +34,15 @@ class GroupListFragment : Fragment(), GroupAdapter.GroupRvEvent {
 
     private lateinit var binding:FragmentGroupListBinding
     private lateinit var stateAdapter: StateAdapter
+    private lateinit var myDbHelper: MyDbHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding=FragmentGroupListBinding.inflate(layoutInflater)
+
+        myDbHelper=MyDbHelper(binding.root.context)
 
         val course=arguments?.getSerializable("key") as Course
         binding.info.text=course.name
@@ -64,7 +67,6 @@ class GroupListFragment : Fragment(), GroupAdapter.GroupRvEvent {
 
         binding.myViewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
-                val list2=ArrayList<Group>()
                 when(position){
                     0->{
                         binding.add.visibility=View.GONE
@@ -78,6 +80,8 @@ class GroupListFragment : Fragment(), GroupAdapter.GroupRvEvent {
             }
         })
 
+        stateAdapter.notifyItemChanged(binding.myViewpager.currentItem)
+
         binding.add.setOnClickListener {
             findNavController().navigate(R.id.groupAddFragment, bundleOf("key" to course))
         }
@@ -86,7 +90,6 @@ class GroupListFragment : Fragment(), GroupAdapter.GroupRvEvent {
     }
 
     override fun viewClick(group: Group, position: Int) {
-
     }
 
     override fun editClick(group: Group, position: Int) {
@@ -94,7 +97,6 @@ class GroupListFragment : Fragment(), GroupAdapter.GroupRvEvent {
     }
 
     override fun trashClick(group: Group, position: Int) {
-
     }
 
 }

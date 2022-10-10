@@ -274,4 +274,78 @@ class MyDbHelper(context: Context):SQLiteOpenHelper(context, DB_NAME, null, DB_V
         )
         return group
     }
+
+    override fun deleteCourse(course: Course) {
+        val database=writableDatabase
+        database.delete(COURSE_TABLE, "$COURSE_ID=?", arrayOf(course.id.toString()))
+        database.close()
+    }
+
+    override fun deleteMentor(mentor: Mentor) {
+        val database=writableDatabase
+        database.delete(MENTOR_TABLE, "$MENTOR_ID=?", arrayOf(mentor.id.toString()))
+        database.close()
+    }
+
+    override fun deleteGroup(group: Group) {
+        val database=writableDatabase
+        database.delete(GROUP_TABLE, "$GROUP_ID=?", arrayOf(group.id.toString()))
+        database.close()
+    }
+
+    override fun deleteStudent(student: Student) {
+        val database=writableDatabase
+        database.delete(STUDENT_TABLE, "$STUDENT_ID=?", arrayOf(student.id.toString()))
+        database.close()
+    }
+
+    override fun editMentors(mentor: Mentor) {
+        val database=writableDatabase
+        val contentValues=ContentValues()
+        contentValues.put(MENTOR_ID, mentor.id)
+        contentValues.put(MENTOR_NAME, mentor.name)
+        contentValues.put(MENTOR_SURNAME, mentor.surname)
+        contentValues.put(MENTOR_PHONE, mentor.phone)
+        contentValues.put(MENTOR_COURSE_ID, mentor.course)
+        database.update(MENTOR_TABLE, contentValues, "$MENTOR_ID=?", arrayOf(mentor.id.toString()))
+    }
+
+    override fun editGroup(group: Group) {
+        val database=writableDatabase
+        val contentValues=ContentValues()
+        contentValues.put(GROUP_ID, group.id)
+        contentValues.put(GROUP_NAME, group.name)
+        contentValues.put(GROUP_MENTOR_ID, group.mentor?.id)
+        contentValues.put(GROUP_TIME, group.time)
+        contentValues.put(GROUP_DAYSOFWEEK, group.daysOfWeek)
+        contentValues.put(GROUP_COURSE_ID, group.course?.id)
+        contentValues.put(GROUP_OPEN, group.open)
+        database.update(GROUP_TABLE, contentValues, "$GROUP_ID=?", arrayOf(group.id.toString()))
+    }
+
+    override fun editStudent(student: Student) {
+        val database=writableDatabase
+        val contentValues=ContentValues()
+        contentValues.put(STUDENT_ID, student.id)
+        contentValues.put(STUDENT_NAME, student.name)
+        contentValues.put(STUDENT_SURNAME, student.surname)
+        contentValues.put(STUDENT_PHONE, student.phone)
+        contentValues.put(STUDENT_DAY, student.day)
+        contentValues.put(STUDENT_GROUP_ID, student.group?.id)
+        database.update(STUDENT_TABLE, contentValues, "$STUDENT_ID=?", arrayOf(student.id.toString()))
+    }
+
+    override fun editGroupOpen(group: Group) {
+        val database=writableDatabase
+        val contentValues=ContentValues()
+        contentValues.put(GROUP_ID, group.id)
+        contentValues.put(GROUP_NAME, group.name)
+        contentValues.put(GROUP_MENTOR_ID, group.mentor?.id)
+        contentValues.put(GROUP_TIME, group.time)
+        contentValues.put(GROUP_DAYSOFWEEK, group.daysOfWeek)
+        contentValues.put(GROUP_COURSE_ID, group.course?.id)
+        contentValues.put(GROUP_OPEN, group.open)
+        database.update(GROUP_TABLE, contentValues, "$GROUP_ID=?", arrayOf(group.id.toString()))
+    }
+
 }

@@ -28,7 +28,16 @@ class AboutCourseFragment : Fragment() {
         binding.info.text=index.name
         binding.about.text=index.info
 
-        binding.add.visibility=View.GONE
+        binding.trash.setOnClickListener {
+            myDbHelper.getAllGroups().forEach {
+                if (it.course==index){
+                    myDbHelper.deleteGroup(it)
+                }
+            }
+            myDbHelper.deleteCourse(index)
+            fragmentManager?.popBackStack()
+        }
+
         binding.back.setOnClickListener {
             fragmentManager?.popBackStack()
         }

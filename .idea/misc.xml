@@ -16,9 +16,12 @@
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/fragment_mentor_add.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/fragment_mentors.xml" value="0.20520833333333333" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/fragment_mentors_list.xml" value="0.2046875" />
+        <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/fragment_students.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/fragment_view_pager_item.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/group_adapter_item.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/group_edit_dialog.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/mentor_adapter_item.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/mentor_edit_dialog.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/spinner_item.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/tab_item_view.xml" value="0.209375" />
       </map>

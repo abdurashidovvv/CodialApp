@@ -39,7 +39,7 @@ class GroupsFragment : Fragment(), CourseAdapter.RvAction {
     }
 
     override fun itemClick(course: Course, position: Int) {
-        MyMentorObject.courseId=position
+        MyMentorObject.courseId=position+1
         findNavController().navigate(R.id.groupListFragment, bundleOf("key" to course))
     }
 

@@ -37,7 +37,7 @@ class GroupAddFragment : Fragment() {
         listMentor.forEach {
             listMentorName.add(it.name.toString())
         }
-        val spinnerAdapter=SpinnerAdapter(listMentorName)
+        spinnerAdapter=SpinnerAdapter(listMentorName)
         binding.mentor.adapter=spinnerAdapter
 
         val listTime=ArrayList<String>()
