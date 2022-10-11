@@ -8,13 +8,17 @@
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:background="@drawable/card_stroka"
         android:hint="Kurs nomi"/>
     <EditText
         android:id="@+id/about"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:background="@drawable/card_stroka"
         android:hint="Kurs haqida"/>
     <EditText
         android:id="@+id/about_2"

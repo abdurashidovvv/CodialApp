@@ -3,8 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="40dp">
+
+    <EditText
+        android:id="@+id/surname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:background="@drawable/card_stroka"
+        android:layout_marginTop="20dp"
+        android:hint="Surname"/>
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
@@ -13,26 +23,17 @@
         android:padding="10dp"
         android:background="@drawable/card_stroka"
         android:layout_marginTop="20dp"
-        android:hint="Kurs nomi"/>
+        android:hint="Name"/>
     <EditText
-        android:id="@+id/about"
+        android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
+        android:inputType="phone"
         android:background="@drawable/card_stroka"
         android:layout_marginTop="20dp"
-        android:hint="Kurs haqida"/>
-    <EditText
-        android:id="@+id/about_2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp"
-        android:padding="10dp"
-        android:visibility="gone"
-        android:background="@drawable/card_stroka"
-        android:layout_marginTop="20dp"
-        android:hint="Kurs haqida"/>
+        android:hint="Phone"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,8 +51,9 @@
             android:id="@+id/save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Qo'shish"
+            android:text="O'zgartirish"
             android:textColor="#FFB800"
             android:textSize="16sp"/>
     </LinearLayout>
+
 </LinearLayout>

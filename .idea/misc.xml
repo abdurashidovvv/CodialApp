@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Projects/CodialApp/app/src/main/res/drawable/card_stroka.xml" value="0.2165" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/drawable/home_background.xml" value="0.1505" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/course_adapter_item.xml" value="0.209375" />
@@ -23,6 +24,7 @@
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/mentor_adapter_item.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/mentor_edit_dialog.xml" value="0.209375" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/spinner_item.xml" value="0.209375" />
+        <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/student_edit_dialog.xml" value="0.18" />
         <entry key="..\:/Android Projects/CodialApp/app/src/main/res/layout/tab_item_view.xml" value="0.209375" />
       </map>
     </option>

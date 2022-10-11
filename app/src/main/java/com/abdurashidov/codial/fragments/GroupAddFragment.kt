@@ -51,7 +51,7 @@ class GroupAddFragment : Fragment() {
         binding.days.adapter=SpinnerAdapter(listDays)
 
         binding.btnSave.setOnClickListener {
-            if (binding.name.text.toString().isNotEmpty()){
+            if (binding.name.text.toString().isNotEmpty() && binding.mentor.selectedItem.toString().isNotEmpty()){
                 val group=Group(
                     name = binding.name.text.toString(),
                     mentor = listMentor[binding.mentor.selectedItemPosition],
@@ -66,6 +66,10 @@ class GroupAddFragment : Fragment() {
             }else{
                 Toast.makeText(binding.root.context, "Iltimos hamma maydonlarni toldiring!", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.back.setOnClickListener {
+            fragmentManager?.popBackStack()
         }
 
         return binding.root

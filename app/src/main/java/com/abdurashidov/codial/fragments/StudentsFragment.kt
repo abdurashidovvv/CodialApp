@@ -1,6 +1,7 @@
 package com.abdurashidov.codial.fragments
 
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.abdurashidov.codial.R
 import com.abdurashidov.codial.adapters.StudentAdapter
 import com.abdurashidov.codial.databinding.FragmentStudentsBinding
 import com.abdurashidov.codial.databinding.MentorEditDialogBinding
+import com.abdurashidov.codial.databinding.StudentEditDialogBinding
 import com.abdurashidov.codial.db.MyDbHelper
 import com.abdurashidov.codial.models.Group
 import com.abdurashidov.codial.models.Student
@@ -46,6 +48,8 @@ class StudentsFragment : Fragment(), StudentAdapter.StudentItemEvent {
         binding=FragmentStudentsBinding.inflate(layoutInflater)
         myDbHelper= MyDbHelper(binding.root.context)
         val group=arguments?.getSerializable("index") as Group
+
+
         list=ArrayList()
         myDbHelper.getAllStudents().forEach {
             if (it.group?.id==group.id){
@@ -56,6 +60,8 @@ class StudentsFragment : Fragment(), StudentAdapter.StudentItemEvent {
         Log.d(TAG, "onCreateView: $list")
         binding.myRv.adapter=studentAdapter
 
+        binding.result.text="${group.name} \nO'quvchilar soni: ${list.size}"
+
         binding.add.setOnClickListener {
             val dialog=AlertDialog.Builder(binding.root.context).create()
             val mentorEditDialogBinding=MentorEditDialogBinding.inflate(layoutInflater)
@@ -63,6 +69,7 @@ class StudentsFragment : Fragment(), StudentAdapter.StudentItemEvent {
             mentorEditDialogBinding.about.hint="Ismi"
             mentorEditDialogBinding.about2.visibility=View.VISIBLE
             mentorEditDialogBinding.about2.hint="Phone"
+            mentorEditDialogBinding.about2.setInputType(InputType.TYPE_CLASS_PHONE)
             dialog.setView(mentorEditDialogBinding.root)
             dialog.show()
 
@@ -93,6 +100,14 @@ class StudentsFragment : Fragment(), StudentAdapter.StudentItemEvent {
         }
         binding.info.text=group.name
 
+        binding.startLesson.setOnClickListener {
+            group.open=true
+            myDbHelper.editGroup(group)
+            Log.d(TAG, "onCreateView: ${group.open}")
+            Toast.makeText(binding.root.context, "Guruhda dars boshlandi!", Toast.LENGTH_SHORT).show()
+            fragmentManager?.popBackStack()
+        }
+
         return binding.root
     }
 
@@ -108,10 +123,33 @@ class StudentsFragment : Fragment(), StudentAdapter.StudentItemEvent {
     }
 
     override fun editClick(student: Student, position: Int) {
+        val dialog=AlertDialog.Builder(binding.root.context).create()
+        val studentEditDialogBinding=StudentEditDialogBinding.inflate(layoutInflater)
+        studentEditDialogBinding.surname.setText(student.surname)
+        studentEditDialogBinding.name.setText(student.name)
+        studentEditDialogBinding.phone.setText(student.phone)
+        dialog.setView(studentEditDialogBinding.root)
+        dialog.show()
 
+        studentEditDialogBinding.cancel.setOnClickListener {
+            dialog.cancel()
+        }
+        studentEditDialogBinding.save.setOnClickListener {
+            if (studentEditDialogBinding.name.text.toString().isNotEmpty() && studentEditDialogBinding.surname.text.toString().isNotEmpty() && studentEditDialogBinding.phone.text.toString().isNotEmpty()){
+                student.surname=studentEditDialogBinding.surname.text.toString()
+                student.name=studentEditDialogBinding.name.text.toString()
+                student.phone=studentEditDialogBinding.phone.text.toString()
+                myDbHelper.editStudent(student)
+                studentAdapter.notifyDataSetChanged()
+                dialog.cancel()
+            }
+        }
     }
 
     override fun trashClick(student: Student, position: Int) {
-
+        myDbHelper.deleteStudent(student)
+        list.remove(student)
+        Toast.makeText(binding.root.context, "O'chirildi", Toast.LENGTH_SHORT).show()
+        studentAdapter.notifyDataSetChanged()
     }
 }
