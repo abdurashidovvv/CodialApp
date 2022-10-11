@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.abdurashidov.codial.R
 import com.abdurashidov.codial.databinding.FragmentAboutCourseBinding
 import com.abdurashidov.codial.db.MyDbHelper
@@ -35,6 +36,7 @@ class AboutCourseFragment : Fragment() {
                 }
             }
             myDbHelper.deleteCourse(index)
+            Toast.makeText(binding.root.context, "Kurs ochirildi", Toast.LENGTH_SHORT).show()
             fragmentManager?.popBackStack()
         }
 

@@ -8,6 +8,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.MentorAddFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#FFB800"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@id/surname_card"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:padding="10dp"
+            app:layout_constraintHorizontal_bias=".05"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yangi mentor qo'shish"
+            android:textColor="#1A4E79"
+            android:textSize="20sp"
+            android:textFontWeight="800"
+            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:targetApi="p" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/surname_card"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -20,11 +56,11 @@
         app:counterMaxLength="20"
         app:helperTextTextColor="#E53935"
         android:hint="Surname"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/surname"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:maxLength="20"
             android:textSize="20sp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -44,7 +80,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:maxLength="20"
             android:textSize="20sp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +100,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:inputType="phone"
             android:maxLength="13"
             android:textSize="20sp"/>

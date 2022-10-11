@@ -65,20 +65,26 @@ class MentorsListFragment : Fragment(), MentorAdapter.MentorItemEvent {
         dialog.show()
 
         mentorEditDialogBinding.save.setOnClickListener {
-            mentor.name=mentorEditDialogBinding.name.text.toString()
-            mentor.surname=mentorEditDialogBinding.about.text.toString()
-            mentor.phone=mentorEditDialogBinding.about2.text.toString()
+            if (mentorEditDialogBinding.name.text.toString().isNotEmpty() && mentorEditDialogBinding.about.text.toString().isNotEmpty() && mentorEditDialogBinding.about2.text.toString().isNotEmpty()){
 
-            myDbHelper.editMentors(mentor)
-            mentorAdapter.notifyDataSetChanged()
-            Toast.makeText(binding.root.context, "Edit", Toast.LENGTH_SHORT).show()
-            dialog.cancel()
+                mentor.name=mentorEditDialogBinding.name.text.toString()
+                mentor.surname=mentorEditDialogBinding.about.text.toString()
+                mentor.phone=mentorEditDialogBinding.about2.text.toString()
+
+                myDbHelper.editMentors(mentor)
+                mentorAdapter.notifyDataSetChanged()
+                Toast.makeText(binding.root.context, "Tahrirlandi", Toast.LENGTH_SHORT).show()
+                dialog.cancel()
+            }else{
+                Toast.makeText(binding.root.context, "Iltimos hamma maydonlarni toldiring!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     override fun trashClick(mentor: Mentor, position: Int) {
         myDbHelper.deleteMentor(mentor)
         list.remove(mentor)
+        Toast.makeText(binding.root.context, "Mentor ochirildi", Toast.LENGTH_SHORT).show()
         mentorAdapter.notifyDataSetChanged()
     }
 

@@ -51,17 +51,21 @@ class GroupAddFragment : Fragment() {
         binding.days.adapter=SpinnerAdapter(listDays)
 
         binding.btnSave.setOnClickListener {
-            val group=Group(
-                name = binding.name.text.toString(),
-                mentor = listMentor[binding.mentor.selectedItemPosition],
-                time = listTime[binding.time.selectedItemPosition],
-                daysOfWeek = listDays[binding.days.selectedItemPosition],
-                course = course,
-                open = false
-            )
-            myDbHelper.addGroup(group)
-            Toast.makeText(binding.root.context, "Save", Toast.LENGTH_SHORT).show()
-            fragmentManager?.popBackStack()
+            if (binding.name.text.toString().isNotEmpty()){
+                val group=Group(
+                    name = binding.name.text.toString(),
+                    mentor = listMentor[binding.mentor.selectedItemPosition],
+                    time = listTime[binding.time.selectedItemPosition],
+                    daysOfWeek = listDays[binding.days.selectedItemPosition],
+                    course = course,
+                    open = false
+                )
+                myDbHelper.addGroup(group)
+                Toast.makeText(binding.root.context, "Saqlandi", Toast.LENGTH_SHORT).show()
+                fragmentManager?.popBackStack()
+            }else{
+                Toast.makeText(binding.root.context, "Iltimos hamma maydonlarni toldiring!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return binding.root
